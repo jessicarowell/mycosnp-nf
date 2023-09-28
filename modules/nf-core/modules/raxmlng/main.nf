@@ -2,9 +2,7 @@ process RAXMLNG {
     label 'process_high'
 
     conda (params.enable_conda ? 'bioconda::raxml-ng=1.0.3' : null)
-    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/raxml-ng:1.0.3--h32fcf60_0' :
-        'quay.io/biocontainers/raxml-ng:1.0.3--h32fcf60_0' }"
+    container 'quay.io/biocontainers/raxml-ng:1.0.3--h32fcf60_0'
 
     input:
     path alignment

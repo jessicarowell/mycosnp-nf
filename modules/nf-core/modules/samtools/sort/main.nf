@@ -3,9 +3,7 @@ process SAMTOOLS_SORT {
     label 'process_medium'
 
     conda (params.enable_conda ? "bioconda::samtools=1.14" : null)
-    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/samtools:1.14--hb421002_0' :
-        'quay.io/biocontainers/samtools:1.14--hb421002_0' }"
+    container 'quay.io/biocontainers/samtools:1.14--hb421002_0'
 
     input:
     tuple val(meta), path(bam)
